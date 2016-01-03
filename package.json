@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/barneycarroll/plasm#readme",
   "dependencies": {
-    "deepmap": "^0.1.0"
+    "deepmap": "^0.1.0",
+    "xet": "^1.0.4"
   }
 }
