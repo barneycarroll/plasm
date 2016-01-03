@@ -1,6 +1,45 @@
 # plasm
 A declarative component instantiation &amp; retrieval system for virtual DOM libraries
 
+```javascript
+import plasm from 'plasm'
+import virtualDomLib from 'wherever'
+
+// Component closure
+function dropdown(){
+	// Per component private state
+	var open = false
+
+	// Component view function
+	return function view( data ){
+		return /* virtual DOM */
+	}
+}
+
+function app(){
+	// Initialisation data
+	var lists = [ sexes, countries ]
+	var user  = {
+		sex     : 'Female',
+		country : 'Kurdistan'
+	}
+
+	return function view(){
+		return
+			/* header furniture */
+			lists.map( ( list, index ) => [
+				plasm( dropdown, { list,
+					get selection : () => user[ list.label ],
+					set selection : x  => user[ list.label ] = x
+					}, index )
+			] )
+			/* footer furniture */
+	}
+}
+
+virtualDomLib.render( rootElement, plasm( app ) )
+```
+
 ## Manifesto
 
 The Javascript virtual DOM view paradigm has revolutionised front-end application development by providing dialects that combine the declarative simplicity of string-based HTML-like templates with the full expressive range of Javascript and a sensitivity to the stateful (and performance-intensive!) nature of DOM manipulation.
@@ -33,6 +72,3 @@ Not really. Some frameworks happen to use virtual DOM management under the hood,
 2. Even if we used a subset of existing logic from a popular framework, the resemblance would be misleading in ways we can't account for as a generic solution.
 3. Starting from scratch allows us to provide a simpler structures that don't rely on esoteric framework concerns while coming up with more focussed solutions to generic problems.
 
-***
-
-*To be continued...*
