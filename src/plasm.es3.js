@@ -1,25 +1,31 @@
-import give    from 'xet'
-import DeepMap from 'deepmap'
+'use strict'
+
+require( 'es6-collections' )
+
+var give    = require( 'xet' )
+var DeepMap = require( 'deepmap' )
 
 // A component is added to the trail when it's invoked,
 // thus any component can see where it is nested.
-const breadcrumbs = new Set()
+var breadcrumbs = new Set()
 // Structure for identifying instances based on multiple complex keys
-const instances   = new DeepMap()
+var instances   = new DeepMap()
 
 // Pass in:
 // * The component factory
 // * The input you want to pass to it
 // * A key (none for unique, index for lists)
 //   identifies the instance within the calling context
-export default ( component, input, key ) => {
+module.exports = function invoke( component, input, key ){
 	// Retrieve it if it exists, set it if not
-	const instance  = give.call(
+	var instance = give.call(
 		instances,
 		// These elements allow us to store and retrieve
 		// individual component instances
-		[ ...breadcrumbs, component, key ],
-		() => new component( input, key )
+		breadcrumbs.concat( component, key ),
+		function initialise(){
+			return new component( input, key )
+		}
 	)
 
 	// Add to the breadcumb trail for nesting context
