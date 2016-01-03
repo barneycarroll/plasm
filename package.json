@@ -1,0 +1,27 @@
+{
+  "name": "plasm",
+  "version": "0.0.1",
+  "description": "A declarative component instantiation & retrieval system for virtual DOM libraries",
+  "jsnext:main": "src/plasm.es6.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barneycarroll/plasm.git"
+  },
+  "keywords": [
+    "virtual",
+    "dom",
+    "component"
+  ],
+  "author": "barney.carroll@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barneycarroll/plasm/issues"
+  },
+  "homepage": "https://github.com/barneycarroll/plasm#readme",
+  "dependencies": {
+    "deepmap": "^0.1.0"
+  }
+}
